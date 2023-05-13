@@ -1,14 +1,14 @@
 import axios from 'axios';
 
-const API_KEY = '35212411-f1d06a82a911fb35f1e71b9dd';
-axios.defaults.baseURL = 'https://pixabay.com/api';
+const KEY = 'api_key=7b264c573728240a6ab06336c75c925f';
 
-export const getMovie = async (value, page = 1) => {
+export const fetch = async (url, properties = '', controller = {}) => {
   try {
-    const url = `/?q=${value}&page=${page}&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`;
-    const response = await axios.get(url);
-
-    return response.data;
+    const dataMovies = await axios.get(
+      `${url}?${API_KEY}${properties}`,
+      controller
+    );
+    return dataMovies.data;
   } catch (error) {
     console.error(error);
   }
