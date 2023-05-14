@@ -2,10 +2,10 @@ import axios from 'axios';
 
 const KEY = 'api_key=7b264c573728240a6ab06336c75c925f';
 
-export const fetch = async (url, properties = '', controller = {}) => {
+const fetch = async (url, properties = '', controller = {}) => {
   try {
     const dataMovies = await axios.get(
-      `${url}?${API_KEY}${properties}`,
+      `${url}?${KEY}${properties}`,
       controller
     );
     return dataMovies.data;
@@ -13,3 +13,5 @@ export const fetch = async (url, properties = '', controller = {}) => {
     console.error(error);
   }
 };
+
+export default fetch;

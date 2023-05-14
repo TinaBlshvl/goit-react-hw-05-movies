@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const MovieDwtails = ({ movie, genres }) => {
+export const MovieDetailsContainer = ({ movie, genres }) => {
   return (
     <section>
       <div>
@@ -31,7 +31,7 @@ export const MovieDwtails = ({ movie, genres }) => {
   );
 };
 
-MovieDwtails.propTypes = {
+MovieDetailsContainer.propTypes = {
   movie: PropTypes.object.isRequired,
   genres: PropTypes.string.isRequired,
 };
