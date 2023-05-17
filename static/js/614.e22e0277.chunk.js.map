@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/614.e22e0277.chunk.js","mappings":"gMAAaA,EAAU,WACrB,OAAO,yDACR,C","sources":["pages/NoMovie.jsx"],"sourcesContent":["export const NoMovie = () => {\n  return <div>Sorry, but we found nothing!</div>;\n};\n"],"names":["NoMovie"],"sourceRoot":""}
