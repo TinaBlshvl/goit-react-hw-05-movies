@@ -4,7 +4,7 @@ export const MovieDetailsContainer = ({ movie, genres }) => {
   return (
     <section>
       <div>
-        <img
+        <image
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt="Movie image"
           width="250"
