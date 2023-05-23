@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ListMovies from 'components/ListMovies';
+import ListMovies from 'components/MovieList';
 import fetchMovies from 'services/fetch';
 
 const URL = 'https://api.themoviedb.org/3/trending/movie/week';

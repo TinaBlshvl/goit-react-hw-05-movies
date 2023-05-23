@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import css from '../SharedLayout/SharedLayout.module.css';
+import css from '../Navigation/Navigation.module.css';
 
 const SearchMovie = ({ formValue, value }) => {
   const submitForm = e => {

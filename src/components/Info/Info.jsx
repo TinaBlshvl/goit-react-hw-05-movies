@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import css from '../AdditionalInfo/AdditionalInfo.module.css';
+import css from '../Info/Info.module.css';
 
 const AdditionalInfo = () => {
   return (

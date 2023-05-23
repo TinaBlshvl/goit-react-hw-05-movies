@@ -3,7 +3,7 @@ import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import fetchMovies from 'services/fetch';
 
 import ContainerMovie from '../components/MovieDetails/ContainerMovie';
-import AdditionalInfo from 'components/AdditionalInfo/AdditionalInfo';
+import AdditionalInfo from 'components/Info/Info';
 
 const MovieDetails = () => {
   const [data, setData] = useState({});
