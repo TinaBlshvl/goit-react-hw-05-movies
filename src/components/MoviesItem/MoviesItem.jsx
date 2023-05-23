@@ -1,16 +1,19 @@
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import css from '../MoviesItem/MoviesItem.module.css';
+import PropTypes from 'prop-types';
 
-export const MoviesItem = ({ id, title }) => {
+const MoviesItem = ({ data: { id, title } }) => {
   return (
-    <li className={css.li}>
-      <Link to={`movies/${id}`}>{title}</Link>
+    <li>
+      <Link to={`movie/${id}`}>{title}</Link>
     </li>
   );
 };
 
 MoviesItem.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
 };
+
+export default MoviesItem;

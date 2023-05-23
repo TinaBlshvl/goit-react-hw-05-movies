@@ -1,10 +1,9 @@
-import { MovieSearch } from 'components/MovieSearch/MovieSearch';
-import fetch from 'services/fetch';
-
+import SearchMovie from 'components/SearchMovie';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import fetchMovies from 'services/fetch';
 
-export const Movie = () => {
+const Movie = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const movieName = searchParams.get('query') ?? '';
@@ -18,9 +17,10 @@ export const Movie = () => {
       if (movieName === '') {
         return;
       }
-      const currentMovie = await fetch(`${URL}`, `&query=${movieName}`).then(
-        res => res.results
-      );
+      const currentMovie = await fetchMovies(
+        `${URL}`,
+        `&query=${movieName}`
+      ).then(res => res.results);
       // console.log(currentMovie);
       setMovies(() =>
         currentMovie.map(({ id, title }) => ({
@@ -42,7 +42,7 @@ export const Movie = () => {
 
   return (
     <>
-      <MovieSearch formValue={submitFormValue} value={movieName} />
+      <SearchMovie formValue={submitFormValue} value={movieName} />
       <div>
         <ul>
           {movies.map(({ id, title }) => {
@@ -59,3 +59,5 @@ export const Movie = () => {
     </>
   );
 };
+
+export default Movie;

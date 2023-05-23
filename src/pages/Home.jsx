@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { MoviesList } from 'components/MoviesList/MoviesList';
-import fetch from 'services/fetch';
+import ListMovies from 'components/ListMovies';
+import fetchMovies from 'services/fetch';
+
 const URL = 'https://api.themoviedb.org/3/trending/movie/week';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      const asd = await fetch(URL);
+      const asd = await fetchMovies(URL);
       setMovies([...asd.results]);
     }
 
@@ -16,7 +17,9 @@ export const Home = () => {
 
   return (
     <>
-      <MoviesList items={movies} />
+      <ListMovies moviesArr={movies} />
     </>
   );
 };
+
+export default Home;

@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import fetch from 'services/fetch';
+import fetchMovies from 'services/fetch';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { id } = useParams();
   const URL = `https://api.themoviedb.org/3/movie/${id}/reviews`;
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch(URL);
+      const res = await fetchMovies(URL);
+      // console.log(res.results);
       setReviews(() => {
         return res.results.map(({ id, author, content }) => ({
           id,
@@ -30,7 +31,7 @@ export const Reviews = () => {
             <li key={id}>
               <>
                 <div>
-                  <span>Author</span>: {author}
+                  <spsn>Author</spsn>: {author}
                 </div>
                 <p>'{content}'</p>
               </>
@@ -38,8 +39,10 @@ export const Reviews = () => {
           ))}
         </ul>
       ) : (
-        <p>Sorry, but we can't find it!</p>
+        <p>We found nothing! Try again!</p>
       )}
     </div>
   );
 };
+
+export default Reviews;

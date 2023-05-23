@@ -1,11 +1,12 @@
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
-const KEY = 'api_key=7b264c573728240a6ab06336c75c925f';
+const API_KEY = 'api_key=7b264c573728240a6ab06336c75c925f';
 
-const fetch = async (url, properties = '', controller = {}) => {
+const fetchMovies = async (url, properties = '', controller = {}) => {
   try {
     const dataMovies = await axios.get(
-      `${url}?${KEY}${properties}`,
+      `${url}?${API_KEY}${properties}`,
       controller
     );
     return dataMovies.data;
@@ -14,4 +15,10 @@ const fetch = async (url, properties = '', controller = {}) => {
   }
 };
 
-export default fetch;
+fetchMovies.propTypes = {
+  url: PropTypes.string.isRequired,
+  properties: PropTypes.string,
+  controller: PropTypes.object,
+};
+
+export default fetchMovies;

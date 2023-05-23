@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import fetch from 'services/fetch';
+import fetchMovies from 'services/fetch';
+import css from '../Cast/Cast.module.css';
 
-export const Cast = () => {
+const Cast = () => {
   const { id } = useParams();
   const URL = `https://api.themoviedb.org/3/movie/${id}/credits`;
   const IMG_URL = 'https://image.tmdb.org/t/p/w500';
@@ -10,7 +11,7 @@ export const Cast = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch(URL);
+      const res = await fetchMovies(URL);
       if (res === undefined) {
         return;
       }
@@ -36,7 +37,7 @@ export const Cast = () => {
     <>
       <div>
         {actors.length > 0 && (
-          <ul>
+          <ul className={css.container}>
             {actors.map(({ name, character, profile_path }) => {
               return (
                 <li key={name}>
@@ -56,8 +57,10 @@ export const Cast = () => {
             })}
           </ul>
         )}
-        {actors.length === 0 && <div>Sorry, but we found nothing!</div>}
+        {actors.length === 0 && <div>We found nothing! Try again!</div>}
       </div>
     </>
   );
 };
+
+export default Cast;

@@ -1,11 +1,11 @@
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
-import fetch from 'services/fetch';
+import fetchMovies from 'services/fetch';
 
-import { MovieDetailsContainer } from 'components/MovieDetails/MovieDetails';
-import { MovieInfo } from 'components/MovieInfo/MovieInfo';
+import ContainerMovie from '../components/MovieDetails/ContainerMovie';
+import AdditionalInfo from 'components/AdditionalInfo/AdditionalInfo';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [data, setData] = useState({});
   const [genres, setGenres] = useState('');
   const { id } = useParams();
@@ -19,7 +19,7 @@ export const MovieDetails = () => {
     // const controller = new AbortController();
 
     async function fetchData() {
-      const currentMovie = await fetch(
+      const currentMovie = await fetchMovies(
         URL
         // {
         // signal: controller.signal,
@@ -58,14 +58,18 @@ export const MovieDetails = () => {
       {Object.keys(data).length > 0 && (
         <>
           <Link to={backLinkHref.current}>Go back</Link>
-          <MovieDetailsContainer data={data} genres={genres} />
-          <MovieInfo />
+          <ContainerMovie data={data} genres={genres} />
+          <AdditionalInfo />
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
         </>
       )}
-      {Object.keys(data).length === 0 && <p>Sorry, but we found nothing</p>}
+      {Object.keys(data).length === 0 && (
+        <p>No data, maybe something went wrong...</p>
+      )}
     </div>
   );
 };
+
+export default MovieDetails;

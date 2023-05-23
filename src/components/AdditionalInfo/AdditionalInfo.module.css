@@ -1,0 +1,25 @@
+.aditionalContainer {
+  background-color: rgb(212, 149, 149);
+  padding: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.aditionalText {
+  font-size: 25px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+.aditionalLi {
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.link {
+  text-decoration: none;
+  list-style: none;
+  color: #000;
+}
